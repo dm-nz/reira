@@ -1,0 +1,1580 @@
+// Table of contents
+// -----------------
+// 1. General
+	// 1.1. Misc
+	// 1.2. Typography
+	// 1.3. Posts & comments navigation
+	// 1.4. Accessibility
+	// 1.5. Alignments
+	// 1.6. Media
+	// 1.7. Captions
+	// 1.8. Galleries
+	// 1.9. Forms
+	// 1.10. Buttons
+// 2. Header
+	// 2.1. Misc
+	// 2.2. Top bar
+	// 2.3. Top bar title
+	// 2.4. Top bar right & left
+	// 2.5. Header absolute
+	// 2.6. Off-canvas
+// 3. Content
+	// 3.1. Entry
+	// 3.2. Cover
+	// 3.3. Post formats
+// 4. Comments
+	// 4.1. Misc
+	// 4.2. Comment list
+	// 4.3. Comment
+	// 4.4. Respond
+// 5. Widgets
+	// 5.1. General
+	// 5.2. Search form
+	// 5.3. RSS & Recent comments
+	// 5.4. Tag cloud
+	// 5.5. Calendar
+// 6. Footer
+
+// 1. General
+// ----------
+
+// 1.1. Misc
+// ---------
+
+a {
+	@include transition;
+}
+
+#page {
+
+	h1, h2, h3, h4, h5, h6 {
+
+		a:hover {
+			color: $anchor-color-hover;
+		}
+	}
+
+	a:hover {
+
+		h1, h2, h3, h4, h5, h6 {
+			color: $anchor-color-hover;
+		}
+	}
+
+	.inverse {
+		&,
+		h1, h2, h3, h4, h5, h6 {
+			color: $white;
+		}
+	}
+}
+
+.inverse {
+
+	a {
+		color: $white;
+		text-decoration: underline;
+		text-decoration-color: rgba($white, 0.5);
+
+		#page &:hover {
+			color: rgba($white, 0.75);
+			text-decoration: none;
+		}
+	}
+
+	table thead,
+	table tbody,
+	table tfoot {
+		background: none;
+		color: inherit;
+	}
+
+	table tbody tr:nth-child(2n) {
+		background-color: rgba($white, 0.1);
+	}
+
+	cite {
+		color: $medium-gray;
+	}
+
+	abbr,
+	abbr[title] {
+		border-color: rgba($white, 0.5);
+	}
+
+	.close-button:hover {
+		color: scale-color($dark-gray, $lightness: -14%);
+	}
+}
+
+.divider {
+	border-left: 1px solid $light-gray;
+	margin-left: 1em;
+	margin-right: 1em;
+}
+
+@include breakpoint(large up) {
+	.grid-padding-x .large-collapse-right {
+		padding-right: 0 !important;
+	}
+
+	.grid-padding-x .large-collapse-left {
+		padding-left: 0 !important;
+	}
+}
+
+.orbit-previous,
+.orbit-next {
+	top: 46%;
+	margin: 0 1rem;
+
+	&:hover {
+		opacity: 0.5;
+	}
+}
+
+.accordion {
+	border-bottom: 1px solid $light-gray;
+
+	.accordion-title {
+		font-weight: $global-weight-bold;
+		border-top: 1px solid $light-gray;
+
+		@include breakpoint(small only) {
+			font-size: 1rem;
+		}
+	}
+}
+
+.tabs {
+	border-bottom: 1px solid $light-gray;
+
+	.tabs-title {
+		font-weight: $global-weight-bold;
+		border-bottom: 3px solid transparent;
+
+		&.is-active {
+			border-color: $primary-color;
+		}
+	}
+}
+
+// 1.2. Typography
+// ---------------
+
+blockquote {
+
+	p:last-child {
+		margin-bottom: 0;
+	}
+}
+
+code {
+	border: 0 !important;
+	border-radius: $global-radius;
+}
+
+pre {
+	padding: 0.5em 1em !important;
+	background: $light-gray;
+	border-radius: $global-radius;
+	margin-bottom: 1.5rem !important;
+	overflow: auto;
+
+	code {
+		background: none;
+		padding: 0;
+	}
+}
+
+dl dd {
+	margin-left: 1em;
+	margin-bottom: 0.5em;
+}
+
+table {
+	margin-bottom: 1.5rem;
+
+	th,
+	td {
+		vertical-align: top;
+	}
+}
+
+// 1.3. Posts & comments navigation
+// --------------------------------
+
+#post-nav-wrapper {
+	font-family: $body-font-family-alt;
+	border-top: 1px solid $light-gray;
+	background-color: $body-background;
+	padding-top: 2.5rem;
+	padding-bottom: 2.5rem;
+
+	@include breakpoint(small only) {
+		padding-top: 1.5rem;
+		padding-bottom: 1.5rem;
+	}
+}
+
+.comment-navigation,
+.post-navigation,
+.posts-navigation {
+
+	a {
+		color: $body-font-color;
+
+		&:hover {
+			color: $anchor-color-hover;
+		}
+	}
+
+	.nav-previous,
+	.nav-next {
+		display: inline-block;
+		width: 50%;
+
+		a:before,
+		a:after {
+			font-family: "Font Awesome 5 Free";
+			font-weight: 900;
+		}
+	}
+
+	.nav-previous a:before {
+		content: '\f104';
+		margin-right: 0.5em;
+	}
+
+	.nav-next {
+		float: right;
+		text-align: right;
+
+		a:after {
+			content: '\f105';
+			margin-left: 0.5em;
+		}
+	}
+}
+
+// 1.4. Accessibility
+// ------------------
+
+/* Text meant only for screen readers. */
+.screen-reader-text {
+	clip: rect(1px, 1px, 1px, 1px);
+	position: absolute !important;
+	height: 1px;
+	width: 1px;
+	overflow: hidden;
+}
+
+.screen-reader-text:focus {
+	background-color: #f1f1f1;
+	border-radius: 3px;
+	box-shadow: 0 0 2px 2px rgba(0, 0, 0, 0.5);
+	clip: auto !important;
+	color: #21759b;
+	display: block;
+	font-size: rem-calc(14);
+	font-size: 0.867rem;
+	font-weight: bold;
+	height: auto;
+	left: 5px;
+	line-height: normal;
+	padding: 15px 23px 14px;
+	text-decoration: none;
+	top: 5px;
+	width: auto;
+	z-index: 100000; /* Above WP toolbar. */
+}
+
+/* Do not show the outline on the skip link target. */
+#content[tabindex="-1"]:focus {
+	outline: 0;
+}
+
+// 1.5. Alignments
+// ---------------
+
+.alignleft {
+	display: inline;
+	float: left;
+	margin-right: 1.5em;
+}
+
+.alignright {
+	display: inline;
+	float: right;
+	margin-left: 1.5em;
+}
+
+.aligncenter {
+	clear: both;
+	display: block;
+	margin-left: auto;
+	margin-right: auto;
+}
+
+// 1.6. Media
+// ----------
+
+.page-content .wp-smiley,
+.entry-content .wp-smiley,
+.comment-content .wp-smiley {
+	border: none;
+	margin-bottom: 0;
+	margin-top: 0;
+	padding: 0;
+}
+
+embed,
+iframe,
+object,
+video {
+	max-width: 100%;
+}
+
+audio,
+video,
+.wp-audio-shortcode,
+.wp-video {
+	margin-bottom: 1rem;
+}
+
+// 1.7. Captions
+// -------------
+
+.wp-caption {
+	margin-bottom: 1.5em;
+	max-width: 100%;
+
+	img[class*="wp-image-"] {
+		display: block;
+		margin-left: auto;
+		margin-right: auto;
+	}
+
+	.wp-caption-text {
+		margin: 0.5em 0;
+	}
+}
+
+.wp-caption-text {
+	color: $dark-gray;
+}
+
+// 1.8. Galleries
+// --------------
+
+.gallery {
+	padding-top: 1rem;
+	margin-bottom: 1.5rem;
+}
+
+.gallery-item {
+	margin-bottom: 1rem;
+	display: inline-block;
+	text-align: center;
+	vertical-align: top;
+	width: 100%;
+}
+
+.gallery-caption {
+	display: block;
+}
+
+.gallery-icon {
+	margin-bottom: 0.5rem;
+}
+
+.gallery-columns-2 .gallery-item { max-width: 50%; }
+.gallery-columns-3 .gallery-item { max-width: 33.33%; }
+.gallery-columns-4 .gallery-item { max-width: 25%; }
+.gallery-columns-5 .gallery-item { max-width: 20%; }
+.gallery-columns-6 .gallery-item { max-width: 16.66%; }
+.gallery-columns-7 .gallery-item { max-width: 14.28%; }
+.gallery-columns-8 .gallery-item { max-width: 12.5%; }
+.gallery-columns-9 .gallery-item { max-width: 11.11%; }
+
+// 1.9. Forms
+// ----------
+
+form label {
+	font-family: $body-font-family-alt;
+}
+
+fieldset {
+	border: $fieldset-border !important;
+	padding: 0 1em 1em !important;
+	margin: $fieldset-margin !important;
+	border-radius: $global-radius;
+}
+
+legend {
+	margin-top: 0.5em;
+	padding: 0 0.5em !important;
+	font-weight: $global-weight-bold;
+}
+
+form textarea[rows] {
+	height: 9rem;
+}
+
+.input-wrapper input[type="text"],
+.input-wrapper input[type="tel"],
+.input-wrapper input[type="email"] {
+	padding-left: rem-calc(35);
+}
+
+.input-wrapper::before {
+	font-family: "Font Awesome 5 Free";
+	font-weight: 900;
+	color: $medium-gray;
+	position: absolute;
+	line-height: 1.25;
+	margin-top: rem-calc(11);
+	margin-left: rem-calc(12);
+	width: rem-calc(25);
+	z-index: 1;
+}
+
+.input-wrapper.name::before 	{ content: "\f007"; }
+.input-wrapper.phone::before 	{ content: "\f095"; }
+.input-wrapper.email::before 	{ content: "\f0e0"; }
+
+.wpcf7-not-valid-tip {
+	margin-top: -1rem;
+	margin-bottom: 0.5rem;
+}
+
+div.wpcf7-response-output {
+	margin: 0 !important;
+	border-radius: $global-radius;
+}
+
+div.wpcf7 .ajax-loader {
+ 	position: absolute;
+	margin-top: 0.75em;
+	margin: 0.5rem 0 0 0.5rem;
+}
+
+// 1.10. Buttons
+// -------------
+
+button {
+	cursor: pointer;
+}
+
+input.submit,
+input.search-submit,
+form input[type="submit"] {
+	@include button;
+}
+
+.inverse a.button {
+	text-decoration: none;
+}
+
+.inverse .hollow.button {
+	border: 1px solid $white;
+	color: $white;
+
+	&:hover {
+		border-color: rgba($white, 0.75);
+	}
+}
+
+.reveal p .button {
+	margin-bottom: 0;
+}
+
+.menu li.button {
+	display: inline-block;
+	margin-top: -1px;
+	margin-bottom: 0;
+	padding: 0 1.25rem;
+	border: 0;
+	background: none;
+	font-size: inherit;
+
+	&:hover {
+		background: none;
+		color: inherit;
+	}
+
+	a {
+		@include button;
+		padding: $menu-items-padding;
+		margin-bottom: 0;
+		font-size: inherit;
+
+		@include breakpoint(medium down) {
+			width: 92%;
+		}
+	}
+}
+
+.menu.drilldown li.button {
+	padding: 0;
+
+	a {
+		display: block;
+	}
+}
+
+.menu li.hollow.button {
+	border: 0;
+	color: inherit;
+
+	a {
+		background-color: transparent;
+		color: $button-background;
+		border: 1px solid $button-background;
+
+		&:hover {
+			color: $button-background-hover;
+			border-color: $button-background-hover;
+		}
+	}
+}
+
+.inverse .menu li.hollow.button a {
+	color: $white;
+	border-color: $white;
+
+	&:hover {
+		color: scale-color($white, $lightness: $button-hollow-hover-lightness);
+		border-color: scale-color($white, $lightness: $button-hollow-hover-lightness);
+	}
+}
+
+// 2. Header
+// ---------
+
+// 2.1. Misc
+// ---------
+
+.sticky-header {
+	z-index: 10;
+}
+
+#masthead {
+	background: $topbar-background;
+	border-bottom: 1px solid $light-gray;
+	font-family: $body-font-family-alt;
+}
+
+.menu-hamburger ul.menu {
+	float: right;
+}
+
+.menu-hamburger a {
+	padding-right: 0 !important;
+}
+
+
+.admin-bar .is-stuck {
+	margin-top: 32px !important;
+
+	@include breakpoint(medium down) {
+		margin-top: 46px !important;
+	}
+}
+
+// 2.2. Top bar
+// ------------
+
+.top-bar {
+
+	@include breakpoint(small only) {
+		padding: 0.5rem 0 !important;
+	}
+
+	a {
+		color: $body-font-color;
+
+		&:hover {
+			color: $anchor-color-hover;
+		}
+	}
+
+	.dropdown.menu > li.is-dropdown-submenu-parent {
+		> a::after {
+			border-color: $body-font-color transparent transparent;
+		}
+		li.opens-left > a::after {
+			border-color: transparent $body-font-color transparent transparent;
+		}
+		li.opens-right > a::after {
+			border-color: transparent transparent transparent $body-font-color;
+		}
+	}
+}
+
+.inverse .menu > li > a {
+	color: $white;
+	text-decoration: none;
+
+	#page &:hover {
+		color: rgba($white, 0.5);
+	}
+}
+
+.inverse .menu .active > a {
+	color: scale-color($menu-item-color-active, $lightness: 50%);
+}
+
+// 2.3. Top bar title
+// ------------------
+
+.menu > li.site-logo > a {
+	padding: 0;
+}
+
+.top-bar-title {
+
+	.site-logo img {
+		width: auto;
+		height: rem-calc(35);
+		margin-right: 1rem;
+
+		@include breakpoint(medium up) {
+			height: rem-calc(40);
+		}
+	}
+
+	.site-title {
+		font-weight: $global-weight-bold;
+
+		h1 {
+			margin-bottom: 0;
+			font-size: inherit;
+		}
+
+		a {
+			padding-left: 0;
+			padding-right: 0;
+			color: $header-color;
+
+			&:hover {
+				color: $anchor-color-hover;
+			}
+
+			.inverse & {
+				color: $white;
+				text-decoration: none;
+			}
+		}
+	}
+
+	.site-description {
+
+		&.menu-text {
+			font-weight: $global-weight-normal;
+		}
+
+		span {
+			padding-left: 1em;
+			border-left: 1px solid $light-gray;
+
+			.inverse & {
+				border-color: rgba($white, 0.1);
+			}
+		}
+	}
+}
+
+// 2.4. Tob bar right & left
+// -------------------------
+
+@include breakpoint(small only) {
+	.top-bar .top-bar-left,
+	.top-bar .top-bar-right {
+		-ms-flex: 0 0 50%;
+		flex: 0 0 50%;
+	}
+}
+
+.dropdown.menu > li.is-dropdown-submenu-parent > a {
+	padding-right: 2.4rem;
+
+	&:after {
+		right: 23px;
+		margin-top: -1px;
+	}
+}
+
+.top-bar-right .menu.dropdown > li:last-of-type:not(.is-dropdown-submenu-parent) > a {
+	padding-right: 0;
+}
+
+.inverse .dropdown.menu > li.is-dropdown-submenu-parent > a::after {
+	border-color: $white transparent transparent;
+}
+
+.top-bar-right .menu.dropdown > li:last-of-type.button {
+	padding-right: 0;
+
+		& > a {
+		padding-right: 1rem;
+	}
+}
+
+// 2.5. Header absolute
+// --------------------
+
+.header-absolute {
+	position: absolute;
+	width: 100%;
+
+	.is-anchored {
+
+		#masthead,
+		.top-bar,
+		.top-bar ul {
+			background: transparent;
+		}
+
+		#masthead {
+			border-bottom: 1px solid rgba($white, 0.1);
+		}
+	}
+}
+
+.header-absolute .is-anchored,
+.inverse {
+
+	.top-bar {
+		color: $white;
+
+		a {
+		color: $white;
+
+			&:hover {
+				color: rgba($white, 0.75);
+			}
+		}
+
+		ul ul {
+			background: $topbar-background;
+
+			a {
+				color: $body-font-color;
+
+				&:hover {
+					color: $anchor-color-hover;
+				}
+			}
+		}
+
+		.dropdown.menu > li.is-dropdown-submenu-parent {
+			> a::after {
+				border-color: $white transparent transparent;
+			}
+			li.opens-left > a::after {
+				border-color: transparent $white transparent transparent;
+			}
+			li.opens-right > a::after {
+				border-color: transparent transparent transparent $white;
+			}
+		}
+
+		.dropdown.menu .dropdown.menu > li.is-dropdown-submenu-parent {
+			> a::after {
+				border-color: transparent $body-font-color transparent transparent;
+			}
+			li.opens-left > a::after {
+				border-color: transparent $body-font-color transparent transparent;
+			}
+			li.opens-right > a::after {
+				border-color: transparent transparent transparent $body-font-color;
+			}
+		}
+
+		.site-description span {
+			border-color: rgba($white, 0.1);
+		}
+	}
+}
+
+// 2.6. Off-canvas
+// ---------------
+
+.off-canvas {
+	padding-top: 1rem;
+	font-family: $body-font-family-alt;
+
+	.admin-bar & {
+		padding-top: 3rem;
+	}
+
+	.close-button {
+		padding: 0 0.25em;
+
+		.admin-bar & {
+			top: 3rem;
+		}
+	}
+
+	.menu {
+		margin-left: 1rem;
+
+		li a {
+			outline: 0;
+		}
+
+		li.button {
+			display: inline-block;
+			margin: 0.5rem 0;
+			padding-left: 0.25rem;
+
+			a {
+				border-radius: $global-radius;
+			}
+		}
+	}
+}
+
+// 3. Content
+// ----------
+
+// 3.1. Entry
+// ----------
+
+#primary {
+	margin-bottom: 1rem;
+
+	@include breakpoint(small only) {
+		margin-bottom: 0;
+	}
+}
+
+#main article {
+	margin-bottom: 2.25rem;
+
+	.blog &,
+	.archive &,
+	.search-results & {
+		margin-bottom: 3.5rem;
+	}
+}
+
+.featured-image {
+	margin-bottom: 2rem;
+
+	img {
+		width: 100%;
+	}
+}
+
+.entry-header {
+	margin-bottom: 0.75rem;
+
+	@include breakpoint(small only) {
+		margin-bottom: 0.5rem;
+	}
+
+	&.grid-container {
+		margin-top: 2.5rem;
+
+		@include breakpoint(medium down) {
+			margin-top: 1rem;
+		}
+	}
+
+	.entry-title {
+		line-height: 1.15;
+
+		a {
+			color: $header-color;
+		}
+	}
+
+	h1.entry-title {
+		margin-bottom: 1.25rem;
+	}
+
+	.entry-meta {
+		margin-bottom: 0.75rem;
+		font-size: $small-font-size;
+		font-family: $body-font-family-alt;
+
+		@include breakpoint(small only) {
+			.entry-meta {
+				margin-bottom: 0;
+			}
+		}
+	}
+}
+
+.entry-content {
+
+	h1, h2, h3, h4, h5, h6 {
+		margin-bottom: 1.5rem;
+	}
+
+	.card {
+
+		h1, h2, h3, h4, h5, h6 {
+			margin-top: 0;
+		}
+	}
+}
+
+.entry-meta .item,
+.entry-footer .item {
+	margin-right: 1.5em;
+	display: inline-block;
+
+	@include breakpoint(large up) {
+		margin-right: 2em;
+	}
+}
+
+.entry-meta .item:before,
+.entry-footer .item:before,
+.edit-link:before {
+	margin-right: 0.65em;
+	font-family: "Font Awesome 5 Free";
+	font-weight: 900;
+	color: $medium-gray;
+}
+
+.byline:before { content: '\f406'; }
+.posted-on:before { content: '\f017'; }
+.comments-link:before { content: '\f075'; }
+.cat-links:before { content: '\f07c'; }
+.tags-links:before { content: '\f292'; }
+.edit-link:before { content: '\f044'; }
+
+
+a.more-link {
+	display: inline-block;
+	margin-bottom: 1.25rem;
+
+	p > & {
+		margin-bottom: 0;
+	}
+}
+
+.entry-footer {
+	font-size: $small-font-size;
+	font-family: $body-font-family-alt;
+
+	.single & {
+		margin-bottom: 0;
+	}
+}
+
+.entry-meta a,
+.entry-footer,
+.entry-footer a {
+	color: $dark-gray;
+}
+
+.entry-meta a:hover,
+.entry-footer a:hover {
+	color: $anchor-color-hover;
+}
+
+.page .entry-footer .divider,
+.divider.tags-post-edit {
+	display: none;
+}
+
+.cat-links + .divider.tags-post-edit,
+.tags-links + .divider.tags-post-edit {
+	display: inline;
+}
+
+.sticky.post {
+	@include callout;
+}
+
+// 3.2. Cover
+// ----------
+
+.entry-cover {
+	position: relative;
+	margin-bottom: 1.5rem;
+	overflow: hidden;
+	background: $black;
+	background-position: center;
+	background-size: cover;
+	text-shadow: 0 0 1em rgba(0, 0, 0, 0.5);
+
+	@include breakpoint(xlarge up) {
+		margin-bottom: 3.5rem;
+	}
+
+	.grid-container {
+		position: relative;
+
+		.grid-x {
+			height: 700px;
+
+			@include breakpoint(xlarge up) {
+				height: 92vh;
+			}
+
+			@include breakpoint(medium only) {
+				height: 550px;
+			}
+
+			@include breakpoint(small only) {
+				height: 350px;
+			}
+
+			.cell {
+				padding-bottom: 2.5rem;
+
+				@include breakpoint(medium down) {
+					padding-bottom: 1rem;
+				}
+
+				@include breakpoint(xlarge up) {
+					.entry-title {
+						font-size: rem-calc(72);
+					}
+				}
+
+				.entry-meta {
+					margin-bottom: 0;
+
+					&,
+					.item:before,
+					a {
+						color: rgba($white, 0.65);
+					}
+				}
+			}
+		}
+	}
+}
+
+.image-filter {
+	position: absolute;
+	width: 100%;
+	height: 100%;
+	top: 0;
+	left: 0;
+	background-image: linear-gradient(180deg, rgba(0, 0, 0, 0.5), rgba(0, 0, 0, 0.15), rgba(0, 0, 0, 0), rgba(0, 0, 0, 0));
+}
+
+// 3.3. Blocks
+// -----------
+
+.entry .entry-content > * {
+	max-width: $content-width;
+}
+
+.entry .entry-content > .alignwide {
+	width: 100%;
+	max-width: 100%;
+}
+
+.entry .entry-content > .alignfull {
+	width: 100vw;
+	max-width: 100vw;
+
+	@include breakpoint(xlarge up) {
+		margin-left: calc(-100vw / 2 + #{$global-width} / 2 - #{map-get($grid-margin-gutters, large)} / 2);
+	}
+
+	@include breakpoint(large only) {
+		margin-left: - (map-get($grid-margin-gutters, large) / 2);
+	}
+
+	@include breakpoint(medium only) {
+		margin-left: - (map-get($grid-margin-gutters, medium) / 2);
+	}
+
+	@include breakpoint(small only) {
+		margin-left: - (map-get($grid-margin-gutters, small) / 2);
+	}
+}
+
+.wp-block-embed figcaption {
+	text-align: left;
+}
+
+.wp-block-image {
+	margin-top: 2.5rem;
+	margin-bottom: 2.5rem;
+
+	.alignleft,
+	.alignright {
+		padding-top: 0.5rem;
+	}
+}
+
+.wp-block-media-text {
+	margin-bottom: 2.5rem;
+}
+
+ul.wp-block-gallery {
+	margin-left: 0;
+}
+
+.wp-block-columns.alignfull {
+
+	@include breakpoint(large up) {
+		padding-left: map-get($grid-margin-gutters, large) / 2;
+		padding-right: map-get($grid-margin-gutters, large) / 2;
+	}
+
+	@include breakpoint(medium only) {
+		padding-left: map-get($grid-margin-gutters, medium) / 2;
+		padding-right: map-get($grid-margin-gutters, medium) / 2;
+	}
+}
+
+ul.wp-block-latest-posts,
+ul.wp-block-archives,
+ul.wp-block-categories {
+	margin-left: 0;
+	list-style: none;
+	font-family: $body-font-family-alt;
+	font-weight: $global-weight-bold;
+	font-size: 1.35rem;
+	line-height: 1.25;
+
+	li {
+		margin-top: 0.25em;
+		margin-bottom: 0.25em;
+	}
+}
+
+ul.wp-block-latest-posts.is-grid li {
+	border-top: 2px solid $light-gray;
+	padding-top: 0.75rem;
+	margin-bottom: 2rem;
+}
+
+ol.wp-block-latest-comments {
+	margin-left: 0;
+
+	.wp-block-latest-comments__comment-meta {
+		font-family: $body-font-family-alt;
+	}
+}
+
+p.has-drop-cap:first-child:first-letter {
+	margin-top: 0.1em;
+}
+
+.has-large-font-size {
+	line-height: 1.75;
+}
+
+.has-huge-font-size {
+	line-height: 1.6;
+}
+
+.wp-block-button {
+
+	.wp-block-button__link {
+		font-family: $button-font-family;
+		padding: $button-padding;
+		line-height: 1;
+
+		&:not(.has-background) {
+			background-color: $primary-color;
+		}
+	}
+
+	&:not(.is-style-squared) .wp-block-button__link {
+		border-radius: $button-radius;
+	}
+
+	&:not(.is-style-outline) .wp-block-button__link {
+		border: 2px solid transparent;
+	}
+
+	&.is-style-outline .wp-block-button__link {
+		background-color: transparent;
+	}
+}
+
+.wp-block-file {
+
+	a {
+		display: block;
+	}
+
+	.wp-block-file__button {
+		@include button;
+	}
+}
+
+.wp-block-table.is-style-stripes {
+	border-collapse: collapse;
+
+	td {
+		border-color: currentColor;
+	}
+}
+
+// 3.4. Archive, search, 404
+// -------------------------
+
+.page-header {
+	margin-top: 2.5rem;
+
+	.page-title {
+		line-height: 1.25;
+		margin-bottom: 0.5em;
+		padding-bottom: 0.35em;
+		border-bottom: 1px solid $light-gray;
+	}
+}
+
+.search-results article,
+.page-content {
+	max-width: $content-width;
+}
+
+.page-content {
+	margin-bottom: 3rem;
+}
+
+// 4. Comments
+// -----------
+
+#comments {
+
+	// 4.1. Misc
+	// ---------
+
+	.comments-inner {
+		max-width: $content-width;
+	}
+
+	.comments-title,
+	#respond {
+		padding-top: 1.5rem;
+		border-top: 1px solid $light-gray;
+	}
+
+	.comments-title {
+		margin-bottom: 0.75em;
+	}
+
+	.comment-navigation {
+		margin-bottom: 2.5rem;
+
+		.nav-links a {
+			font-family: $body-font-family-alt;
+		}
+	}
+
+	// 4.2. Comment list
+	// -----------------
+
+	ol.comment-list {
+		margin-left: rem-calc(64);
+		margin-bottom: 2.5em;
+
+		li {
+			list-style: none;
+		}
+	}
+
+	ol ol.children {
+		margin-left: rem-calc(48);
+
+		ol.children {
+			margin-left: 0;
+		}
+
+		img.avatar {
+			width: rem-calc(32);
+			height: rem-calc(32);
+			margin-left: rem-calc(-48) !important;
+		}
+	}
+
+	// 4.3. Comment
+	// ------------
+
+	.comment {
+
+		.comment-meta,
+		.reply {
+			font-family: $body-font-family-alt;
+		}
+
+		.comment-meta {
+			line-height: 1.75;
+			margin-bottom: 0.65rem;
+		}
+
+		.bypostauthor {
+			display: block;
+		}
+
+		.comment-body {
+			margin-bottom: 1.5rem;
+
+			.comment-author {
+				display: inline-block;
+
+				a.url {
+					color: $body-font-color;
+
+					&:hover {
+						color: $anchor-color-hover;
+					}
+				}
+
+				img.avatar {
+					position: absolute;
+					margin-top: rem-calc(10);
+					margin-left: rem-calc(-64);
+					border-radius: 50%;
+				}
+			}
+
+			.comment-metadata {
+				font-size: $small-font-size;
+			}
+
+			.comment-content a {
+				word-wrap: break-word;
+			}
+
+			.reply {
+				margin-top: -1em;
+				font-size: $small-font-size;
+
+				&:before {
+					font-family: "Font Awesome 5 Free";
+					font-weight: 900;
+					content: '\f3e5';
+					margin-right: 0.75em;
+					color: $medium-gray;
+				}
+			}
+
+			.comment-metadata a,
+			.reply a {
+				color: $dark-gray;
+
+				&:hover {
+					color: $anchor-color-hover;
+				}
+			}
+
+			.edit-link {
+				margin-left: 1.5em;
+
+				@include breakpoint(large up) {
+					margin-left: 2em;
+				}
+			}
+		}
+	}
+
+	// 4.4. Respond
+	// ------------
+
+	#respond {
+		margin-bottom: 1.5rem;
+
+		.comment-form-comment label {
+			font-family: $body-font-family-alt;
+		}
+
+		.comment-form {
+			max-width: $content-width;
+
+			.form-submit {
+				clear: left;
+			}
+		}
+
+		@include breakpoint(medium up) {
+			.comment-form-author,
+			.comment-form-email,
+			.comment-form-url {
+				width: 32.2%;
+				margin-right: 1.5%;
+				float: left;
+			}
+		}
+
+		.comment-form-url {
+			margin-right: 0;
+		}
+	}
+}
+
+// 5. Widgets
+// ----------
+
+// 5.1. General
+// ------------
+
+.widget {
+	margin-bottom: 2rem;
+
+	ul {
+		list-style-type: none;
+		margin-left: 0;
+
+		ul {
+			margin-top: 0.5em;
+			padding-left: 1rem;
+		}
+
+		a {
+			color: $body-font-color;
+
+			&:hover {
+				color: $anchor-color-hover;
+			}
+
+			.inverse & {
+				color: $white;
+				text-decoration: none;
+				text-decoration-color: $dark-gray;
+
+				&:hover {
+					color: rgba($white, 0.75);
+				}
+			}
+		}
+	}
+
+	.menu > li {
+		display: list-item;
+
+		> a {
+			padding: 0;
+			line-height: inherit;
+		}
+	}
+}
+
+h2.widget-title {
+	font-weight: normal;
+}
+
+// 5.2. Search form
+// ----------------
+
+.search-form label {
+	width: 65%;
+	float: left;
+	margin-right: 2%;
+}
+
+.search-form .search-submit {
+	width: 33%;
+	height: rem-calc(49);
+	padding-top: 0;
+	padding-bottom: 0;
+}
+
+// 5.3. RSS & Recent comments
+// --------------------------
+
+.rss-widget-icon {
+	margin-right: 0.25rem;
+}
+
+.widget.widget_rss ul li a,
+.widget_recent_comments ul li a {
+	color: $anchor-color;
+
+	&:hover {
+		color: $anchor-color-hover;
+	}
+}
+
+.inverse .widget.widget_rss ul li a,
+.inverse .widget_recent_comments ul li a {
+	color: $white;
+	text-decoration: underline;
+	text-decoration-color: rgba($white, 0.5);
+
+	&:hover {
+		text-decoration: none;
+	}
+}
+
+.rss-date {
+	opacity: 0.75;
+	font-size: 0.867rem;
+}
+
+.rssSummary {
+	font-size: 0.867rem;
+}
+
+// 5.4. Tag cloud
+// --------------
+
+.tagcloud a {
+	color: inherit;
+
+	.inverse & {
+		text-decoration: none;
+		text-decoration-color: rgba($white, 0.5);
+	}
+}
+
+// 5.5. Calendar
+// -------------
+
+#wp-calendar thead th,
+#wp-calendar tbody {
+	text-align: center;
+}
+
+table tfoot td#next {
+	text-align: right;
+}
+
+// 6. Footer
+// ---------
+
+#footer-wrapper {
+	font-family: $body-font-family-alt;
+	background: $black;
+}
+
+#footer-widgets {
+	padding-top: 3rem;
+	background-color: scale-color($black, $lightness: 5%);
+
+	.menu li {
+		display: block;
+	}
+}
+
+#colophon {
+	padding-top: 2.5rem;
+	padding-bottom: 2.5rem;
+
+	i {
+		margin-right: 0.25em;
+	}
+
+	@include breakpoint(small only) {
+		padding-top: 1.5rem;
+		padding-bottom: 1.5rem;
+	}
+
+	.grid-container {
+		opacity: 0.65;
+
+		@include breakpoint(small only) {
+			.cell {
+				margin-top: 0.5rem;
+				margin-bottom: 0.5rem;
+			}
+		}
+	}
+}
