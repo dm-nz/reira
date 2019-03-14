@@ -634,13 +634,23 @@ form input[type="submit"] {
 
 .top-bar-title {
 
-	.site-logo img {
-		width: auto;
+	.site-logo a {
+		display: flex;
+		-webkit-box-align: center;
+		-ms-flex-align: center;
+		align-items: center;
+		width: rem-calc(160);
 		height: rem-calc(35);
 		margin-right: 1rem;
 
 		@include breakpoint(medium up) {
+			width: rem-calc(300);
 			height: rem-calc(40);
+		}
+
+		img {
+			width: auto;
+			max-height: 100%;
 		}
 	}
 
@@ -689,10 +699,14 @@ form input[type="submit"] {
 // -------------------------
 
 @include breakpoint(small only) {
-	.top-bar .top-bar-left,
+	.top-bar .top-bar-left {
+		-ms-flex: 0 0 60%;
+		flex: 0 0 60%;
+	}
+
 	.top-bar .top-bar-right {
-		-ms-flex: 0 0 50%;
-		flex: 0 0 50%;
+		-ms-flex: 0 0 40%;
+		flex: 0 0 40%;
 	}
 }
 
@@ -886,15 +900,14 @@ form input[type="submit"] {
 	.entry-title {
 		line-height: 1.15;
 
+		&h1 {
+			margin-bottom: 1.25rem;
+		}
+
 		a {
 			color: $header-color;
 		}
 	}
-
-	h1.entry-title {
-		margin-bottom: 1.25rem;
-	}
-
 	.entry-meta {
 		margin-bottom: 0.75rem;
 		font-size: $small-font-size;
@@ -1455,10 +1468,6 @@ p.has-drop-cap:first-child:first-letter {
 			line-height: inherit;
 		}
 	}
-}
-
-h2.widget-title {
-	font-weight: normal;
 }
 
 // 5.2. Search form

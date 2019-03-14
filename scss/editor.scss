@@ -81,7 +81,7 @@ body .wp-block[data-align="full"] {
 
 @media only screen and (min-width: 1168px) {
 	.wp-block {
-		width: rem-calc(870);
+		width: rem-calc(920);
 	}
 }
 
@@ -93,7 +93,7 @@ body .wp-block[data-align="full"] {
 // ------------------
 
 body {
-	font-size: $global-font-size;
+	font-size: 123%;
 	font-family: $body-font-family;
 	line-height: 1.8;
 	color: #111;
@@ -140,11 +140,11 @@ h6 { font-size: map-deep-get($header-styles, large, h6, font-size) + px }
 
 a {
 	transition: color 110ms ease-in-out;
-	color: #0073aa;
+	color: $anchor-color;
 }
 
 a:hover, a:active {
-	color: #005177;
+	color: $anchor-color-hover;
 	outline: 0;
 	text-decoration: none;
 }
@@ -393,7 +393,8 @@ table td {
 // -------------
 
 .wp-block-quote:not(.is-large):not(.is-style-large) {
-	border-left: 2px solid #0073aa;
+	border-left: $blockquote-border;
+	padding: $blockquote-padding;
 }
 
 .wp-block-quote.is-large, .wp-block-quote.is-style-large {
@@ -460,7 +461,7 @@ table td {
 }
 
 .wp-block-pullquote.is-style-solid-color:not(.has-background-color) {
-	background-color: #0073aa;
+	background-color: $primary-color;
 }
 
 .wp-block[data-type="core/pullquote"] blockquote > .block-library-pullquote__content .editor-rich-text__tinymce[data-is-empty="true"]::before,
@@ -746,7 +747,8 @@ ul.wp-block-archives li ul,
 }
 
 .wp-block-freeform blockquote {
-	border-left: 2px solid #0073aa;
+	border-left: $blockquote-border;
+	padding: $blockquote-padding;
 }
 
 .wp-block-freeform blockquote cite {
