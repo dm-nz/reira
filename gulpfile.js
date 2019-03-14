@@ -10,6 +10,11 @@ var sassPaths = [
   'node_modules/motion-ui/src'
 ];
 
+var editorSassPaths = [
+	'scss/_settings.scss',
+	'scss/editor.scss'
+]
+
 function sass() {
   return gulp.src('scss/app.scss')
     .pipe($.sass({
@@ -55,8 +60,8 @@ function scripts() {
 
 // Watch files
 function watch() {
-  gulp.watch('scss/**/*.scss', sass);
-  gulp.watch('scss/**/*.scss', editor);
+  gulp.watch('scss/*.scss', sass);
+  gulp.watch(editorSassPaths, editor);
   gulp.watch('js/custom.js', scripts);
 }
 
