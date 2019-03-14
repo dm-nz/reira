@@ -12,12 +12,7 @@
 ?><!DOCTYPE html>
 <html <?php language_attributes(); ?>>
 <head>
-<meta charset="<?php bloginfo( 'charset' ); ?>">
-<meta name="viewport" content="width=device-width, initial-scale=1">
-<link rel="profile" href="http://gmpg.org/xfn/11">
-<link rel="pingback" href="<?php bloginfo( 'pingback_url' ); ?>">
-<?php wp_head(); ?>
-<link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.6.3/css/all.css" integrity="sha384-UHRtZLI+pbxtHCWp1t77Bi1L4ZtiqrqD80Kn4Z8NTSRyMA2Fd33n5dQ8lWUE00s/" crossorigin="anonymous">
+<?php get_template_part( 'template-parts/header/head' ); ?>
 </head>
 
 <body <?php body_class(); ?>>
@@ -50,6 +45,6 @@
 					</header><!-- #masthead.site-header -->
 				</div><!-- data-sticky -->
 			</div><!-- .sticky-header data-sticky-container -->
-		</div>
+		</div><!-- header-absolute -->
 
 		<div id="content" class="site-content">
