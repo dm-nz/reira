@@ -14,7 +14,7 @@ function reira_widgets_init() {
 		'description'	 => esc_html__( 'Add widgets here.', 'reira' ),
 		'before_widget' => '<section id="%1$s" class="widget %2$s large-4 medium-6 cell">',
 		'after_widget'	=> '</section>',
-		'before_title'	=> '<h2 class="widget-title h5">',
+		'before_title'	=> '<h2 class="widget-title h4">',
 		'after_title'	 => '</h2>',
 	) );
 }
