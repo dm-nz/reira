@@ -5,7 +5,7 @@
   "main": "gulpfile.js",
   "scripts": {
     "start": "gulp",
-    "build": "gulp sass && gulp scripts"
+    "build": "gulp default"
   },
   "author": "ZURB <foundation@zurb.com>",
   "license": "MIT",
@@ -15,19 +15,19 @@
   },
   "dependencies": {
     "foundation-sites": "^6.5.3",
-    "jquery": ">=3.2.1",
+    "jquery": "^3.4.0",
     "motion-ui": "~2.0.3",
-    "what-input": "^5.1.2"
+    "what-input": "^5.2.1"
   },
   "devDependencies": {
-    "autoprefixer": "^9.1.5",
-    "gulp": "^4.0.0",
+    "autoprefixer": "^9.5.1",
+    "gulp": "^4.0.1",
+    "gulp-concat": "^2.5.2",
     "gulp-load-plugins": "^1.1.0",
     "gulp-postcss": "^8.0.0",
+    "gulp-rename": "^1.4.0",
     "gulp-sass": "^4.0.1",
-    "gulp-concat": "^2.5.2",
-    "gulp-uglify": "^3.0.1",
-    "gulp-rename": "^1.4.0"
+    "gulp-uglify": "^3.0.2"
   },
   "repository": {
     "type": "git",

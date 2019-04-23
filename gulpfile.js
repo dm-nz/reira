@@ -69,4 +69,4 @@ gulp.task('sass', sass);
 gulp.task('sass', editor);
 gulp.task('scripts', scripts);
 gulp.task('watch', watch);
-gulp.task('default', gulp.series(scripts, sass, editor, watch));
+gulp.task('default', gulp.series(scripts, sass, editor));
