@@ -36,3 +36,9 @@ require get_template_directory() . '/inc/walkers.php';
 
 // Enhance the theme by hooking into WordPress
 require get_template_directory() . '/inc/template-functions.php';
+
+// Setup Carbon Fields
+include_once( ABSPATH . 'wp-admin/includes/plugin.php' );
+if ( is_plugin_active( 'carbon-fields/carbon-fields-plugin.php' ) ) {
+	require get_template_directory() . '/inc/crb-setup.php';
+}
