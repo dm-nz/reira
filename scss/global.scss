@@ -133,19 +133,6 @@ a {
 	}
 }
 
-.accordion {
-	border-bottom: 1px solid $light-gray;
-
-	.accordion-title {
-		font-weight: $global-weight-bold;
-		border-top: 1px solid $light-gray;
-
-		@include breakpoint(small only) {
-			font-size: 1rem;
-		}
-	}
-}
-
 .tabs {
 	border-bottom: 1px solid $light-gray;
 

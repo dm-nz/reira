@@ -16,6 +16,7 @@
 // 14. Separator
 // 15. Latest posts, archives, categories
 // 16. Classic editor
+// 17. Blocks
 
 // 1. Setup
 // ---------
@@ -24,7 +25,10 @@
 
 @import 'settings';
 @import 'foundation';
+@import 'blocks';
 @import 'https://fonts.googleapis.com/css?family=Lato:400,700|Lora:400,400i,700';
+
+@include foundation-accordion;
 
 // 2. Editor frame
 // ---------------
@@ -93,14 +97,13 @@ body .wp-block[data-align="full"] {
 // ------------------
 
 body {
-	font-size: 123%;
 	font-family: $body-font-family;
-	line-height: 1.8;
-	color: #111;
+	line-height: $global-lineheight;
+	color: $body-font-color;
 }
 
-p {
-	font-size: $global-font-size;
+body:not(.mce-content-body) {
+	font-size: 135%;
 }
 
 h1,
@@ -220,6 +223,10 @@ figcaption,
 	font-size: 0.71111em;
 	line-height: 1.6;
 	color: #767676;
+}
+
+input[type="text"] {
+	font-size: $input-font-size;
 }
 
 // Post Title

@@ -1,0 +1,16 @@
+// Accordion
+
+.accordion {
+	border-bottom: 1px solid $light-gray;
+
+	.accordion-title {
+		font-family: $body-font-family-alt;
+		font-weight: $global-weight-bold;
+		border-top: 1px solid $light-gray;
+		text-decoration: none;
+
+		@include breakpoint(small only) {
+			font-size: 1rem;
+		}
+	}
+}
