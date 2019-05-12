@@ -37,7 +37,7 @@ function reira_setup() {
 		}
 		return $classes;
 	}
-	add_filter('nav_menu_css_class' , 'active_menu_item' , 10 , 2);
+	// add_filter('nav_menu_css_class' , 'active_menu_item' , 10 , 2);
 
 	// Switch default core markup for search form, comment form, and comments to output valid HTML5.
 	add_theme_support( 'html5', array(

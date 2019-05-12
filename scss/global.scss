@@ -1447,12 +1447,16 @@ p.has-drop-cap:first-child:first-letter {
 		}
 	}
 
-	.menu > li {
-		display: list-item;
+	.menu {
+		@include menu-direction(vertical);
 
-		> a {
-			padding: 0;
-			line-height: inherit;
+		& > li {
+			display: list-item;
+
+			> a {
+				padding: 0;
+				line-height: inherit;
+			}
 		}
 	}
 }
