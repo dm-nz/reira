@@ -31,8 +31,8 @@ function reira_setup() {
 	) );
 
 	// Add active class to menu
-	function active_menu_item ($classes, $item) {
-		if (in_array('current-menu-item', $classes) ){
+	function active_menu_item ( $classes, $item ) {
+		if ( in_array( 'current-menu-item', $classes ) ){
 			$classes[] = 'active ';
 		}
 		return $classes;
